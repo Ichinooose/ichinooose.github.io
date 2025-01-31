@@ -1,12 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <title>一之瀬のサイト</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TacticsForge - Minecraftプラグイン解説</title>
+    <style>
+        /* Minecraft風フォント */
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://cdn.jsdelivr.net/npm/minecraft-font@1.0.0/font/minecraft.woff2');
+        }
 
+        body {
+            font-family: 'Minecraft', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            background-image: url('minecraft_bg.png');
+            background-size: cover;
+        }
 
-    <body>
-    お試しに書いてみました。空いている時間にどんどん書いていくと思います。
-</body>
+        .header {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 4px solid #4d4d4d;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .nav-button {
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 15px 30px;
+            border: 3px solid #4d4d4d;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #3d3d3d;
+            transform: scale(1.05);
+        }
+
+        .skill-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .skill-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 3px solid #4d4d4d;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .skill-icon {
+            width: 64px;
+            height: 64px;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .skill-title {
+            color: #55FF55;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .cooldown {
+            color: #FF5555;
+            margin: 10px 0;
+        }
+
+        .point-required {
+            color: #5555FF;
+            margin: 10px 0;
+        }
+    </style>
 </head>
+<body>
+    <div class="header">
+        <h1>🛠️ TacticsForge</h1>
+        <div class="nav-container">
+            <button class="nav-button" onclick="showTab('str')">STR型</button>
+            <button class="nav-button" onclick="showTab('def')">DEF型</button>
+            <button class="nav-button" onclick="showTab('dex')">DEX型</button>
+            <button class="nav-button" onclick="showTab('int')">INT型</button>
+        </div>
+    </div>
+
+    <!-- STR型ページ -->
+    <div id="str" class="skill-container" style="display: block;">
+        <div class="skill-card">
+            <div class="skill-icon">⚔️</div>
+            <div class="skill-title">パワーブロー</div>
+            <div class="description">敵に強力な一撃を放つ</div>
+            <div class="cooldown">クールダウン: 15秒</div>
+            <div class="point-required">必要ポイント: 3</div>
+        </div>
+        <!-- 他のスキルカードを追加 -->
+    </div>
+
+    <!-- DEF型ページ -->
+    <div id="def" class="skill-container" style="display: none;">
+        <div class="skill-card">
+            <div class="skill-icon">🛡️</div>
+            <div class="skill-title">アイアンウォール</div>
+            <div class="description">10秒間防御力が50%上昇</div>
+            <div class="cooldown">クールダウン: 30秒</div>
+            <div class="point-required">必要ポイント: 2</div>
+        </div>
+        <!-- 他のスキルカードを追加 -->
+    </div>
+
+    <!-- 他のタイプのページを追加 -->
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.skill-container');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabName).style.display = 'block';
+        }
+    </script>
+</body>
 </html>
